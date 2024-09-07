@@ -1,0 +1,69 @@
+{
+  "name": "advanced-broadcast-message",
+  "version": "0.0.1-alpha.0",
+  "description": "Inspired from post robot, this module is designed to provide a simple interface for the inter tab communication using the Broadcast channel.",
+  "main": "dist/index.cjs",
+  "types": "dist/index.d.cts",
+  "module": "dist/index.js",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest",
+    "prepare": "npm run build",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "prettier": "prettier src --check",
+    "prettier:fix": "prettier src --write",
+    "format": "npm run prettier:fix && npm run lint:fix"
+  },
+  "author": {
+    "name": "Deepak Kharah",
+    "email": "42672761+Deepak-Kharah@users.noreply.github.com",
+    "url": "https://www.deepakkharah.com/"
+  },
+  "repository": "github:Deepak-Kharah/advanced-broadcast-message",
+  "bugs": {
+    "url": "https://github.com/Deepak-Kharah/advanced-broadcast-message/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "broadcast-channel": "^7.0.0",
+    "zalgo-promise": "^1.0.48"
+  },
+  "keywords": [
+    "broadcast-message",
+    "post-robot"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^9.10.0",
+    "@types/zalgo-promise": "^1.0.0",
+    "eslint": "^9.10.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-react": "^7.35.2",
+    "globals": "^15.9.0",
+    "happy-dom": "^15.7.3",
+    "husky": "^8.0.0",
+    "prettier": "^3.0.3",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.4.0",
+    "vitest": "^2.0.5"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "useDefineForClassFields": true,
+    "module": "CommonJS",
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "types": ["vitest/globals"],
+    "lib": ["dom", "es2018"],
+
+    /* Bundler mode */
+    // "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    // "isolatedModules": true,
+
+    /* Linting */
+    "strict": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
+}
