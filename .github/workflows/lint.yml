@@ -48,5 +48,7 @@ jobs:
       - name: Commit and Push changes
         if: steps.git-check.outputs.result == 'Changes found'
         uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: run formatter on CI"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
