@@ -15,7 +15,7 @@ export class BroadcastMessenger {
 
   constructor(
     private logger: Logger,
-    config: Config
+    config: Config,
   ) {
     this.sendResponse = this.sendResponse.bind(this);
     this.sendRequest = this.sendRequest.bind(this);
@@ -25,7 +25,7 @@ export class BroadcastMessenger {
     this.config = config;
     this.broadcastChannel = new BroadcastChannel<EditorRequestEventMessage>(
       this.config.get("channelId"),
-      this.config.get("channelConfig")
+      this.config.get("channelConfig"),
     );
   }
 
@@ -67,7 +67,7 @@ export class BroadcastMessenger {
   private getMessage(
     config: BroadcastChannelSendOptions & {
       nature: EditorBroadcastChannelNature;
-    }
+    },
   ): EditorRequestEventMessage {
     const { nature, hash, payload, type, error } = config;
     return {

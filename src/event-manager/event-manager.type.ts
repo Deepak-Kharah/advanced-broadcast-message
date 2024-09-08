@@ -16,5 +16,5 @@ export interface RequestListener {
 }
 
 export type RequestHandler<Payload = any, ReturnType = any> = (
-  event: OnEvent<Payload>
+  event: OnEvent<Payload>,
 ) => ReturnType;

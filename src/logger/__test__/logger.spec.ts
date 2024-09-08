@@ -45,7 +45,7 @@ describe("Logger", () => {
       EVENT_MANAGER_NAME,
       "DEBUG:",
       TEST_MESSAGE,
-      {}
+      {},
     );
   });
 
@@ -78,7 +78,7 @@ describe("Logger", () => {
 describe("getErrorMessage", () => {
   it("should return a string with the prefix", () => {
     expect(getErrorMessage("test message")).toBe(
-      EVENT_MANAGER_NAME + ": test message"
+      EVENT_MANAGER_NAME + ": test message",
     );
   });
 });

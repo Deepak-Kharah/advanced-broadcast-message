@@ -66,7 +66,7 @@ export class AdvancedBroadcastMessage {
         this.logger.debug("REQUEST received", event);
         if (this.broadcastMessenger.isClosed) {
           this.logger.error(
-            getErrorMessage(ERROR_MESSAGES.common.channelIsClosed)
+            getErrorMessage(ERROR_MESSAGES.common.channelIsClosed),
           );
         }
 
@@ -75,8 +75,8 @@ export class AdvancedBroadcastMessage {
         if (!this.requestMessageHandlers.has(type)) {
           this.logger.debug(
             getErrorMessage(
-              ERROR_MESSAGES.receiveEvent.noRequestListenerFound(type)
-            )
+              ERROR_MESSAGES.receiveEvent.noRequestListenerFound(type),
+            ),
           );
 
           this.broadcastMessenger.sendResponse({
@@ -86,7 +86,7 @@ export class AdvancedBroadcastMessage {
             error: {
               code: ERROR_CODES.receiveEvent.noRequestListenerFound,
               message: getErrorMessage(
-                ERROR_MESSAGES.receiveEvent.noRequestListenerFound(type)
+                ERROR_MESSAGES.receiveEvent.noRequestListenerFound(type),
               ),
             },
           });
@@ -114,7 +114,7 @@ export class AdvancedBroadcastMessage {
             .catch((err) => {
               this.logger.error(
                 getErrorMessage(ERROR_MESSAGES.receiveEvent.codeReturnedError),
-                err
+                err,
               );
             }),
         ]);
@@ -125,8 +125,8 @@ export class AdvancedBroadcastMessage {
         if (!this.responseMessageHandlers.has(hash)) {
           this.logger.error(
             getErrorMessage(
-              ERROR_MESSAGES.receiveEvent.noResponseListenerFound(hash)
-            )
+              ERROR_MESSAGES.receiveEvent.noResponseListenerFound(hash),
+            ),
           );
           return;
         }
@@ -147,8 +147,8 @@ export class AdvancedBroadcastMessage {
         if (!this.responseMessageHandlers.has(hash)) {
           this.logger.error(
             getErrorMessage(
-              ERROR_MESSAGES.receiveEvent.noAckListenerFound(hash)
-            )
+              ERROR_MESSAGES.receiveEvent.noAckListenerFound(hash),
+            ),
           );
           return;
         }
@@ -161,7 +161,7 @@ export class AdvancedBroadcastMessage {
       default:
         this.logger.error(
           getErrorMessage(ERROR_MESSAGES.receiveEvent.unknownNature(nature)),
-          event
+          event,
         );
     }
   }
@@ -196,7 +196,7 @@ export class AdvancedBroadcastMessage {
     const interval = safeInterval(() => {
       if (this.broadcastMessenger.isClosed) {
         return promise.reject(
-          new Error(getErrorMessage(ERROR_MESSAGES.common.channelIsClosed))
+          new Error(getErrorMessage(ERROR_MESSAGES.common.channelIsClosed)),
         );
       }
 
@@ -213,7 +213,7 @@ export class AdvancedBroadcastMessage {
 
       if (!responseListener.hasReceivedAck && ackTimeLeft <= 0) {
         return promise.reject(
-          getErrorMessage(ERROR_MESSAGES.sendEvent.noAckReceived)
+          getErrorMessage(ERROR_MESSAGES.sendEvent.noAckReceived),
         );
       }
     }, RESPONSE_CYCLE);
@@ -226,7 +226,7 @@ export class AdvancedBroadcastMessage {
       .catch((err) => {
         this.logger.debug(
           getErrorMessage(ERROR_MESSAGES.sendEvent.receiverReturnedError),
-          err
+          err,
         );
       });
 
@@ -258,13 +258,13 @@ export class AdvancedBroadcastMessage {
    */
   on<Payload = unknown, ReturnType = any>(
     type: string,
-    handler: RequestHandler<Payload, ReturnType>
+    handler: RequestHandler<Payload, ReturnType>,
   ) {
     if (this.requestMessageHandlers.has(type)) {
       this.logger.error(
         getErrorMessage(
-          ERROR_MESSAGES.registerEvent.eventAlreadyRegistered(type)
-        )
+          ERROR_MESSAGES.registerEvent.eventAlreadyRegistered(type),
+        ),
       );
     }
 
@@ -287,7 +287,7 @@ export class AdvancedBroadcastMessage {
   private unregisterEvent(type: string) {
     if (!this.requestMessageHandlers.has(type)) {
       this.logger.error(
-        getErrorMessage(ERROR_MESSAGES.unregisterEvent.eventDoesNotExist(type))
+        getErrorMessage(ERROR_MESSAGES.unregisterEvent.eventDoesNotExist(type)),
       );
     } else {
       this.logger.debug("Unregistering event", type);
