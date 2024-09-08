@@ -22,7 +22,7 @@ export class Config {
    */
   set<K extends Path<ChannelConfig>>(
     key: K,
-    value: PathValue<ChannelConfig, K>,
+    value: PathValue<ChannelConfig, K>
   ): void {
     set(this.config, key, value);
   }
