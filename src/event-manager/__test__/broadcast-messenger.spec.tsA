@@ -1,0 +1,207 @@
+// import { MockInstance } from "vitest";
+// import { Config } from "../../config";
+// import { Logger } from "../../logger";
+// import {
+//   AdvBroadcastChannelErrorObject,
+//   EditorBroadcastChannelNature,
+// } from "../broadcast-event.type";
+// import { BroadcastMessenger } from "../broadcast-messenger";
+// import { enforceOptions, clearNodeFolder } from "broadcast-channel";
+
+// describe("BroadcastChannel", () => {
+//   const channelId = "test-channel";
+//   let logger: Logger;
+//   let config: Config;
+//   let loggerSpy: MockInstance;
+
+//   let broadcastChannel: BroadcastMessenger;
+//   beforeAll(async () => {
+//     enforceOptions({ type: "simulate" });
+//     await clearNodeFolder();
+//   });
+
+//   beforeEach(() => {
+//     config = new Config(channelId, {});
+//     config.set("channelId", channelId);
+//     logger = new Logger(config);
+
+//     loggerSpy = vi.spyOn(logger, "debug");
+//     broadcastChannel = new BroadcastMessenger(logger, config);
+//   });
+
+//   afterEach(() => {
+//     vi.clearAllMocks();
+//     loggerSpy.mockRestore();
+//   });
+
+//   afterAll(() => {
+//     vi.restoreAllMocks();
+//   });
+
+//   describe("sendRequest", () => {
+//     it("should send a request message", () => {
+//       const payload = { foo: "bar" };
+//       const type = "test-type";
+//       const hash = "test-hash";
+
+//       const broadcastChannelSpy = vi.spyOn(targetWindow, "broadcastChannel");
+
+//       broadcastChannel.sendRequest({ payload, type, hash, error: undefined });
+
+//       expect(broadcastChannelSpy).toHaveBeenCalledWith(
+//         expect.objectContaining({
+//           eventManager: "advanced-post-message",
+//           metadata: {
+//             hash,
+//             nature: EditorBroadcastChannelNature.REQUEST,
+//           },
+//           channel: channelId,
+//           error: undefined,
+//           payload,
+//           type,
+//         }),
+//         targetOrigin
+//       );
+//     });
+
+//     it("should call debug logger", () => {
+//       const payload = { foo: "bar" };
+//       const type = "test-type";
+//       const hash = "test-hash";
+
+//       broadcastChannel.sendRequest({ payload, type, hash, error: undefined });
+
+//       expect(loggerSpy).toHaveBeenCalledWith(
+//         "Sending REQUEST",
+//         expect.objectContaining({
+//           hash,
+//           nature: EditorBroadcastChannelNature.REQUEST,
+//           error: undefined,
+//           payload,
+//           type,
+//         })
+//       );
+//     });
+//   });
+
+//   describe("sendResponse", () => {
+//     it("should send a response message", () => {
+//       const payload = { foo: "bar" };
+//       const type = "test-type";
+//       const hash = "test-hash";
+
+//       const broadcastChannelSpy = vi.spyOn(targetWindow, "broadcastChannel");
+
+//       broadcastChannel.sendResponse({ payload, type, hash, error: undefined });
+
+//       expect(broadcastChannelSpy).toHaveBeenCalledWith(
+//         expect.objectContaining({
+//           eventManager: "advanced-post-message",
+//           metadata: {
+//             hash,
+//             nature: EditorBroadcastChannelNature.RESPONSE,
+//           },
+//           channel: channelId,
+//           error: undefined,
+//           payload,
+//           type,
+//         }),
+//         targetOrigin
+//       );
+//     });
+
+//     it("should call debug logger", () => {
+//       const payload = { foo: "bar" };
+//       const type = "test-type";
+//       const hash = "test-hash";
+
+//       broadcastChannel.sendResponse({ payload, type, hash, error: undefined });
+
+//       expect(loggerSpy).toHaveBeenCalledWith(
+//         "Sending RESPONSE",
+//         expect.objectContaining({
+//           hash,
+//           nature: EditorBroadcastChannelNature.RESPONSE,
+//           error: undefined,
+//           payload,
+//           type,
+//         })
+//       );
+//     });
+
+//     it("should send proper error object", () => {
+//       const payload = undefined;
+//       const error: AdvBroadcastChannelErrorObject = {
+//         code: "test-code",
+//         message: "test-message",
+//       };
+//       const type = "test-type";
+//       const hash = "test-hash";
+
+//       const broadcastChannelSpy = vi.spyOn(targetWindow, "broadcastChannel");
+
+//       broadcastChannel.sendResponse({
+//         payload,
+//         type,
+//         hash,
+//         error: error,
+//       });
+
+//       expect(broadcastChannelSpy).toHaveBeenCalledWith(
+//         expect.objectContaining({
+//           eventManager: "advanced-post-message",
+//           metadata: {
+//             hash,
+//             nature: EditorBroadcastChannelNature.RESPONSE,
+//           },
+//           channel: channelId,
+//           error,
+//           payload,
+//           type,
+//         }),
+//         targetOrigin
+//       );
+//     });
+//   });
+
+//   describe("sendAck", () => {
+//     it("should send an ack message", () => {
+//       const type = "test-type";
+//       const hash = "test-hash";
+
+//       const broadcastChannelSpy = vi.spyOn(targetWindow, "broadcastChannel");
+
+//       broadcastChannel.sendAck({ type, hash });
+
+//       expect(broadcastChannelSpy).toHaveBeenCalledWith(
+//         expect.objectContaining({
+//           channel: "test-channel",
+//           eventManager: "advanced-post-message",
+//           metadata: { hash, nature: EditorBroadcastChannelNature.ACK },
+//           error: undefined,
+//           payload: undefined,
+//           type,
+//         }),
+//         targetOrigin
+//       );
+//     });
+
+//     it("should call debug logger", () => {
+//       const type = "test-type";
+//       const hash = "test-hash";
+
+//       broadcastChannel.sendAck({ type, hash });
+
+//       expect(loggerSpy).toHaveBeenCalledWith(
+//         "Sending ACK",
+//         expect.objectContaining({
+//           hash,
+//           nature: EditorBroadcastChannelNature.ACK,
+//           error: undefined,
+//           payload: undefined,
+//           type,
+//         })
+//       );
+//     });
+//   });
+// });

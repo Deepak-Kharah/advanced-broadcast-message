@@ -73,8 +73,6 @@ describe("Config handler", () => {
       debug: true,
     });
 
-    console.log(config.getAll());
-
     expect(config.getAll()).toEqual({
       channelId: "channel-id",
       developmentConfig: { debug: true, suppressErrors: false },

@@ -1,6 +1,7 @@
 export const ERROR_MESSAGES = {
   common: {
     channelIdRequired: "The channelId is required",
+    channelIsClosed: "The broadcast channel is closed",
   },
   sendEvent: {
     receiverReturnedError: "The receiver returned an error",

@@ -44,6 +44,7 @@
   "license": "MIT",
   "dependencies": {
     "broadcast-channel": "^7.0.0",
+    "lodash-es": "^4.17.21",
     "zalgo-promise": "^1.0.48"
   },
   "keywords": [
@@ -52,7 +53,9 @@
   ],
   "devDependencies": {
     "@eslint/js": "^9.10.0",
+    "@types/lodash-es": "^4.17.12",
     "@types/zalgo-promise": "^1.0.0",
+    "@vitest/coverage-v8": "^2.0.5",
     "eslint": "^9.10.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-only-warn": "^1.1.0",
