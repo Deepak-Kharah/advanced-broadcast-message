@@ -175,7 +175,3 @@ Listen to messages from another tab.
 - `type` - The type of the message to listen to.
 - `listener` - The listener to call when a message is received. The listener will receive the event object as an argument. The listener can return a value, which will be sent back to the sender tab.
 - Returns an object with an `unregister` method to stop listening to messages.
-
-```
-
-```
