@@ -60,13 +60,13 @@ function App() {
     const messageId = crypto.randomUUID();
 
     setMessages((prev) => [
+      ...prev,
       {
         message: message as string,
         id: messageId,
         isSender: true,
         hasSeen: false,
       },
-      ...prev,
     ]);
 
     broadcastMessage
@@ -116,6 +116,11 @@ function App() {
                 You need to open two instances of this page to see the message
                 in action. If you have only one tab open, you will only see the
                 message you sent.
+              </p>
+              <p>
+                <a href="/" target="_blank" rel="noopener noreferrer">
+                  Duplicate this tab
+                </a>
               </p>
             </div>
 
