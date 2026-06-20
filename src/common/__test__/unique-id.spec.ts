@@ -10,6 +10,8 @@ describe("uniqueId", () => {
   it("should generate a unique ID with a prefix", () => {
     const prefix = "test";
     const id = uniqueId(prefix);
-    expect(id).toMatch(new RegExp(`^${prefix}-[a-f0-9]{8}$`));
+    expect(id).toMatch(
+      new RegExp(`^${prefix}-[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$`),
+    );
   });
 });

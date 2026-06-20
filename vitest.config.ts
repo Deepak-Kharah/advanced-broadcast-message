@@ -5,7 +5,9 @@ export default defineConfig({
   test: {
     environment: "happy-dom",
     coverage: {
-      all: true,
+      // `coverage.all` was removed in Vitest 4; use `include` to count
+      // untested source files in the report instead.
+      include: ["src/**"],
       reporter: ["text", "json-summary", "json", "html"],
       reportOnFailure: true,
     },

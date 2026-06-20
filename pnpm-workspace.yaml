@@ -1,0 +1,7 @@
+allowBuilds:
+  esbuild: true
+
+# Force a patched esbuild (>=0.28.1) to clear GHSA dev-server file-read
+# advisory; vite/tsup pull it transitively below the patched line.
+overrides:
+  esbuild: ">=0.28.1"
